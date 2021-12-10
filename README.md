@@ -8,7 +8,9 @@ create table main.tic_tac_toe_game_status
     id VARCHAR(255) NOT NULL,
     status INT NOT NULL DEFAULT 0
 );
+
 ALTER TABLE main.tic_tac_toe_game_status ADD index (id);
+
 ALTER TABLE main.tic_tac_toe_game_status ADD unique (id);
 
 
@@ -30,6 +32,7 @@ create table main.tic_tac_toe_game_players (
   game_id VARCHAR(255) NOT NULL,
   player SMALLINT NOT NULL
 );
+
 ALTER TABLE main.tic_tac_toe_game_players MODIFY COLUMN game_id VARCHAR(255) NOT NULL;
 ALTER TABLE main.tic_tac_toe_game_players ADD index (game_id);
 ALTER TABLE main.tic_tac_toe_game_players
@@ -44,6 +47,7 @@ create table main.tic_tac_toe_players (
     id SMALLINT NOT NULL,
     player_display_name VARCHAR(4) NOT NULL
 );
+
 ALTER TABLE main.tic_tac_toe_players ADD index (id);
 
 insert into main.tic_tac_toe_players (id, player_display_name) values
@@ -66,13 +70,19 @@ CREATE TABLE main.tic_tac_toe_game_board(
 );
 
 **These are requests examples from postman:**
+
 **create a game:**
+
 curl --location --request POST 'https://localjs.supersonicads.com/ticTacToe' \
 --data-raw ''
+
 **join a game:**
+
 curl --location --request POST 'https://localjs.supersonicads.com/ticTacToe/join/2b9cf67a-2b62-447e-9b4c-4c8355010536' \
 --data-raw ''
+
 **make a move:**
+
 curl --location --request PUT 'https://localjs.supersonicads.com/ticTacToe/makeAMove/2b9cf67a-2b62-447e-9b4c-4c8355010536/o' \
 --header 'Connection: keep-alive' \
 --header 'Content-Type: application/json' \
@@ -80,6 +90,8 @@ curl --location --request PUT 'https://localjs.supersonicads.com/ticTacToe/makeA
     "x":3,
     "y":1
 }'
+
 **get status:**
+
 curl --location --request GET 'https://localjs.supersonicads.com/ticTacToe/status/24d96df6-0630-4c22-948d-23f7a492e0a2' \
 --data-raw ''
